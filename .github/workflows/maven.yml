@@ -37,5 +37,10 @@ jobs:
     - name: Build with Maven
       run: mvn clean package --file pom.xml
     - name: SonarQube Scan
-      run: mvn sonar:sonar -Dsonar.host.url=${{ env.SONAR_HOST_URL }} -Dsonar.login=${{ env.SONAR_TOKEN }} -Dsonar.projectKey=springboot -Dsonar.sources=src
-    - uses: sonarsource/sonarqube-scan-action@master   
+      run: mvn sonar:sonar -Dsonar.host.url=${{ env.SONAR_HOST_URL }} -Dsonar.login=${{ env.SONAR_TOKEN }}
+    - uses: sonarsource/sonarqube-scan-action@master 
+      with:
+        args: >
+          -Dsonar.organization=hello-springboot
+          -Dsonar.projectKey=hello-springboot
+          -Dsonar.sources=src/
