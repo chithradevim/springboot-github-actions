@@ -42,13 +42,13 @@ jobs:
     - name: Build with Maven
       run: mvn clean package --file pom.xml
       
-#     - name: SonarQube Scan
-#       run: mvn sonar:sonar -Dsonar.host.url=${{ env.SONAR_HOST_URL }} -Dsonar.login=${{ env.SONAR_TOKEN }}
-#     - uses: sonarsource/sonarqube-scan-action@master 
-#       with:
-#         args: >
-#           -Dsonar.projectKey=hello-springboot
-#           -Dsonar.sources=src/
+    - name: SonarQube Scan
+      run: mvn sonar:sonar -Dsonar.host.url=${{ env.SONAR_HOST_URL }} -Dsonar.login=${{ env.SONAR_TOKEN }}
+    - uses: sonarsource/sonarqube-scan-action@master 
+      with:
+        args: >
+          -Dsonar.projectKey=hello-springboot
+          -Dsonar.sources=src/
 
     - name: Deploy to tomcat
-      run: curl -v -u tomcat:s3cret -T ${{ env.ARTIFACT_PATH }} 'http://'${{ env.TOMCAT_HOST }}':'${{ env.PORT }}'/manager/text/deploy?path=/'${{ env.CONTEXT_PATH }}''
+      run: curl -v -u ${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }} -T ${{ env.ARTIFACT_PATH }} 'http://'${{ env.TOMCAT_HOST }}':'${{ env.PORT }}'/manager/text/deploy?path=/'${{ env.CONTEXT_PATH }}''
