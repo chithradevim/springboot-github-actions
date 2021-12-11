@@ -50,6 +50,6 @@ jobs:
       with:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
-        key: ${{ secrets.SSH_KEY }}
+        privateKey : ${{ secrets.SSH_KEY }}
         local: "**/*.war"
-        remote: "${{ secrets.REMOTE_DIR }}/single/"
+        remote: "${{ secrets.REMOTE_DIR }}/single/springboot.war"
