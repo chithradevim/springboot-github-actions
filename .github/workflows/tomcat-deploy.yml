@@ -5,7 +5,7 @@ env:
   CONTINUE_ON_ERROR: false
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-  TOMCAT_HOST: 18.221.232.111
+  TOMCAT_HOST: 3.134.247.4
   ARTIFACT_PATH: target/*war
   DESTINATION_PATH: /opt/apache-tomcat-9.0.56/webapps/springboot.war  
   
