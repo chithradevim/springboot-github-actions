@@ -43,3 +43,12 @@ jobs:
         args: >
           -Dsonar.projectKey=hello-springboot
           -Dsonar.sources=src/
+    - name: Deploy to tomcat
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        rm: true
+        source: "html/"
+        target: "${{ secrets.REMOTE_DIR }}"
