@@ -7,8 +7,8 @@ env:
   SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
   TOMCAT_HOST: 18.221.232.111
   ARTIFACT_PATH: target/*war
-  CONTEXT_PATH: springboot
-  PORT: 8080
+#   CONTEXT_PATH: springboot
+#   PORT: 8080
   
 on:
   push:
