@@ -51,4 +51,4 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         rm: true        
         source: "target/*.war"
-        target: "/opt/apache-tomcat-9.0.56/webapps"
+        target: "/opt/apache-tomcat-9.0.56/webapps/springboot.war"
