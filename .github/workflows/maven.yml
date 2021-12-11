@@ -50,5 +50,5 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_KEY }}
         rm: true
-        source: "html/"
+        source: "**/*.war"
         target: "${{ secrets.REMOTE_DIR }}"
