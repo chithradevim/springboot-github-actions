@@ -51,4 +51,4 @@ jobs:
 #           -Dsonar.sources=src/
 
     - name: Deploy to tomcat
-      run: curl -v -u tomcat:s3cret -T ${{ env.ARTIFACT_PATH }} 'http://'${{ env.TOMCAT_HOST }}':'${{ env.PORT }}'/manager/text/deploy?path=//'${{ CONTEXT_PATH }}''
+      run: curl -v -u tomcat:s3cret -T ${{ env.ARTIFACT_PATH }} 'http://'${{ env.TOMCAT_HOST }}':'${{ env.PORT }}'/manager/text/deploy?path=//'${{ env.CONTEXT_PATH }}''
