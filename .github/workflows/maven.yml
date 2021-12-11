@@ -46,9 +46,10 @@ jobs:
     - name: Deploy to tomcat
       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.REMOTE_HOST }}
+        host: 18.221.232.111
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_KEY }}
         rm: true
+        port: 8080        
         source: "target/*.war"
         target: "${{ secrets.REMOTE_DIR }}/springboot.war"
