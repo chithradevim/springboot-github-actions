@@ -6,7 +6,6 @@ env:
   TOMCAT_HOST: 3.134.247.4
   ARTIFACT_PATH: target/*.war
   CONTEXT_PATH: springboot
-  PORT: 8080
   
 on:
   push:
