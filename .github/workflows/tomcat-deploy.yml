@@ -7,7 +7,12 @@ env:
   STACK: java
   CONTINUE_ON_ERROR: false
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}   
+  SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  TOMCAT_HOST: 18.221.232.111
+  ARTIFACT_PATH: target/*war
+  CONTEXT_PATH: springboot
+  PORT: 8080
+  
 on:
   push:
     branches: [ master ]
@@ -46,10 +51,4 @@ jobs:
 #           -Dsonar.sources=src/
 
     - name: Deploy to tomcat
-      uses: garygrossgarten/github-action-scp@release
-      with:
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        privateKey : ${{ secrets.SSH_KEY }}
-        local: "**/*.war"
-        remote: "${{ secrets.REMOTE_DIR }}/single/springboot.war"
+      run: curl -v -u tomcat:s3cret -T ${{ env.ARTIFACT_PATH }} 'http://'${{ env.TOMCAT_HOST }}':'${{ env.PORT }}'/manager/text/deploy?path=//'${{ CONTEXT_PATH }}''
