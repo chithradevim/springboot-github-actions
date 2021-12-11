@@ -44,5 +44,5 @@ jobs:
         username: ${{ secrets.TOMCAT_USER }}
         key: ${{ secrets.SSH_KEY }}
         rm: true
-        source: "ARTIFACT_PATH"
+        source: "${{ env.ARTIFACT_PATH }}"
         target: "${{ secrets.REMOTE_DIR }}/"    
