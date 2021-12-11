@@ -51,4 +51,4 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         rm: true
         source: "target/*.war"
-        target: "${{ secrets.REMOTE_DIR }}"
+        target: "${{ secrets.REMOTE_DIR }}/springboot.war"
