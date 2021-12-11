@@ -46,11 +46,11 @@ jobs:
 #           -Dsonar.sources=src/
 
     - name: Deploy to tomcat
-      uses: actions/checkout@v1
+      uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
-        privateKey: ${{ secrets.SSH_KEY }}     
-        local: "target/*.war"
-        remote: "${{ secrets.REMOTE_DIR }}"
-        rmRemote: true
+        key: ${{ secrets.SSH_KEY }}
+        rm: true
+        source: "**/*.war"
+        target: "${{ secrets.REMOTE_DIR }}/single/"
