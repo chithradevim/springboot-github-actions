@@ -51,5 +51,5 @@ jobs:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_KEY }}     
-        source: "target/mavewebappdemo-2.0.0-SNAPSHOT.war"
-        target: "${{ secrets.REMOTE_DIR }}"
+        source: "target/*.war"
+        output_location: "${{ secrets.REMOTE_DIR }}"
