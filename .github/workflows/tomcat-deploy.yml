@@ -46,7 +46,7 @@ jobs:
 #           -Dsonar.sources=src/
 
     - name: Deploy to tomcat
-      uses: ./
+      uses: actions/checkout@v1
       with:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
