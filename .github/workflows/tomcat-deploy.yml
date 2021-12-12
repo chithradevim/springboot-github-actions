@@ -1,5 +1,4 @@
 name: Java CI with Maven
-
 env:
   STACK: java
   CONTINUE_ON_ERROR: false
