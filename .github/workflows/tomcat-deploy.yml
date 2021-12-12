@@ -50,7 +50,7 @@ jobs:
           -Dsonar.projectKey=hello-springboot
           -Dsonar.sources=src/
           
- - name: Upload repo to remote server
+    - name: Upload repo to remote server
       env:
            SSH_AUTH_SOCK: /tmp/ssh_agent.sock    
       run: |
