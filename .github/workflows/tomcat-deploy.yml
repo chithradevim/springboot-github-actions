@@ -37,7 +37,12 @@ jobs:
         
     - name: Build with Maven
       run: mvn clean package --file pom.xml
-      
+    - name: Publish Artifact 
+      uses: actions/checkout@v1
+    - name: Publish artifact on GitHub Packages
+      run: mvn -B clean deploy -DskipTests
+      env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITPACKAGES }}      
 #     - name: SonarQube Scan
 #       run: mvn sonar:sonar -Dsonar.host.url=${{ env.SONAR_HOST_URL }} -Dsonar.login=${{ env.SONAR_TOKEN }}
 #     - uses: sonarsource/sonarqube-scan-action@master 
@@ -46,10 +51,10 @@ jobs:
 #           -Dsonar.projectKey=hello-springboot
 #           -Dsonar.sources=src/
           
-    - name: Upload repo to remote server
-      env:
-           SSH_AUTH_SOCK: /tmp/ssh_agent.sock    
-      run: |
-        ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-        ssh-add - <<< "${{ secrets.SSH_KEY }}"
-        scp -o StrictHostKeyChecking=no ${{ env.ARTIFACT_PATH }} ${{ secrets.TOMCAT_USER }}@${{ env.TOMCAT_HOST }}:${{ env.DESTINATION_PATH }}
+#   #  - name: Upload repo to remote server
+#       env:
+#            SSH_AUTH_SOCK: /tmp/ssh_agent.sock    
+#       run: |
+#         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+#         ssh-add - <<< "${{ secrets.SSH_KEY }}"
+#         scp -o StrictHostKeyChecking=no ${{ env.ARTIFACT_PATH }} ${{ secrets.TOMCAT_USER }}@${{ env.TOMCAT_HOST }}:${{ env.DESTINATION_PATH }}
